@@ -3,6 +3,7 @@
 <?import com.jfoenix.controls.JFXButton?>
 <?import com.jfoenix.controls.JFXPasswordField?>
 <?import com.jfoenix.controls.JFXTextField?>
+<?import javafx.scene.control.Label?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -30,5 +31,15 @@
             <Font name="System Bold" size="16.0" />
          </font>
       </JFXButton>
+      <Label fx:id="txtUserNameError" layoutX="58.0" layoutY="409.0" text="Invalid User Name...!" textFill="RED" visible="false">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Label>
+      <Label fx:id="txtPasswordError" layoutX="58.0" layoutY="491.0" text="Invalid Password...!" textFill="RED" visible="false">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Label>
    </children>
 </AnchorPane>

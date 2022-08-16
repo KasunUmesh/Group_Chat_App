@@ -54,6 +54,6 @@ public class ServerController {
         String text = txtServerChatSend.getText();
         txtServerChatView.appendText("\t\t\t\t\t\t\t\t\t\t\tServer : " +text.trim());
         dataOutputStream.writeUTF(text);
-        txtServerChatSend.setPromptText("Text Message");
+        txtServerChatSend.setText("");
     }
 }
