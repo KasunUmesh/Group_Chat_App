@@ -26,6 +26,18 @@ public class ServerController {
             try {
                 serverSocket = new ServerSocket(5000);
                 System.out.println("Server Started Waiting for client! .....");
+                socket = serverSocket.accept();
+                System.out.println("Client Accepted! .......");
+
+                dataInputStream = new DataInputStream(socket.getInputStream());
+                dataOutputStream = new DataOutputStream(socket.getOutputStream());
+
+                while (!messageIn.equals("end")){
+                    messageIn = dataInputStream.readUTF();
+                    txtServerChatView.appendText("\nClient : "+messageIn.trim()+ "\n");
+                }
+
+
 
             } catch (IOException e) {
                 throw new RuntimeException(e);
@@ -38,6 +50,10 @@ public class ServerController {
 
 
 
-    public void btnServerTxtSend(ActionEvent actionEvent) {
+    public void btnServerTxtSend(ActionEvent actionEvent) throws IOException {
+        String text = txtServerChatSend.getText();
+        txtServerChatView.appendText("\t\t\t\t\t\t\t\t\t\t\tServer : " +text.trim());
+        dataOutputStream.writeUTF(text);
+        txtServerChatSend.setPromptText("Text Message");
     }
 }
