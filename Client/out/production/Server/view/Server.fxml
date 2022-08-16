@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXTextArea?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+
+<AnchorPane prefHeight="629.0" prefWidth="476.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.ServerController">
+   <children>
+      <Label layoutX="18.0" layoutY="18.0" text="CHAT APP SERVER CHAT">
+         <font>
+            <Font name="Arial Bold" size="35.0" />
+         </font>
+      </Label>
+      <Separator layoutX="18.0" layoutY="69.0" prefHeight="0.0" prefWidth="440.0" />
+      <JFXTextArea fx:id="txtServerChatView" focusColor="BLACK" focusTraversable="false" layoutX="18.0" layoutY="91.0" prefHeight="475.0" prefWidth="440.0" />
+      <TextField fx:id="txtServerChatSend" layoutX="18.0" layoutY="580.0" prefHeight="35.0" prefWidth="338.0" promptText="Text Message" style="-fx-background-radius: 15px; -fx-border-color: #2c3e50; -fx-border-radius: 15px;">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </TextField>
+      <JFXButton buttonType="RAISED" layoutX="368.0" layoutY="580.0" onAction="#btnServerTxtSend" prefHeight="35.0" prefWidth="90.0" style="-fx-background-color: #2980b9;" text="Send" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="15.0" />
+         </font>
+      </JFXButton>
+   </children>
+</AnchorPane>
