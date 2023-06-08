@@ -2,6 +2,7 @@ package controller;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
@@ -38,8 +39,14 @@ public class LoginFormController {
         }
 
         if (flag) {
-            this.mainroot.getChildren().clear();
-            this.mainroot.getChildren().add(FXMLLoader.load(this.getClass().getResource("../view/UserFormOne.fxml")));
+
+            Parent parent = FXMLLoader.load(this.getClass().getResource("../view/UserFormOne.fxml"));
+            Scene scene = new Scene(parent);
+
+            Stage primaryStage = (Stage) this.mainroot.getScene().getWindow();
+            primaryStage.setScene(scene);
+            primaryStage.centerOnScreen();
+            primaryStage.setResizable(false);
         }
 
     }

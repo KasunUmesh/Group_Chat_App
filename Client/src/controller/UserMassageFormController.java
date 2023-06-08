@@ -21,6 +21,7 @@ public class UserMassageFormController extends Thread{
     public Socket socket;
 
     public void initialize(){
+        txtUserOneChatView.setEditable(false);
         System.out.println("Initialized method" + LoginFormController.userName);
         txtUserName.setText(LoginFormController.userName);
 
