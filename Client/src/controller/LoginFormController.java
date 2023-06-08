@@ -6,34 +6,40 @@ import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
+import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.util.ArrayList;
 
 
 public class LoginFormController {
+    public TextField txtloginUserName;
+    public AnchorPane mainroot;
 
-    public TextField txtUserName;
-    public PasswordField txtPassword;
-    public Label txtUserNameError;
-    public Label txtPasswordError;
+    public static String userName;
+
+    public static ArrayList<String> users = new ArrayList<>();
 
     public void btnLoginOnAction(ActionEvent actionEvent) throws IOException {
-        if (txtUserName.getText().equals("user1") && txtPassword.getText().equals("1234")) {
-            txtUserNameError.setVisible(false);
-            txtPasswordError.setVisible(false);
-            txtUserName.clear();
-            txtPassword.clear();
-            Stage stage = new Stage();
-            stage.setScene(new Scene(FXMLLoader.load(getClass().getResource("../view/UserFormOne.fxml"))));
-            stage.setTitle("Group Chat App - User One");
-            stage.show();
+        userName = txtloginUserName.getText().trim();
+        boolean flag = false;
+        if (users.isEmpty()) {
+            users.add(userName);
+            flag = true;
+        }
 
-        } else {
-            txtUserNameError.setVisible(true);
-            txtPasswordError.setVisible(true);
-            txtUserName.clear();
-            txtPassword.clear();
+        for (String s : users) {
+            if (!s.equalsIgnoreCase(userName)) {
+               flag = true;
+                System.out.println(userName);
+                break;
+            }
+        }
+
+        if (flag) {
+            this.mainroot.getChildren().clear();
+            this.mainroot.getChildren().add(FXMLLoader.load(this.getClass().getResource("../view/UserFormOne.fxml")));
         }
 
     }
