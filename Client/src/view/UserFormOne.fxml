@@ -3,30 +3,53 @@
 <?import com.jfoenix.controls.JFXButton?>
 <?import com.jfoenix.controls.JFXTextArea?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.control.Separator?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.effect.DropShadow?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-
-<AnchorPane prefHeight="629.0" prefWidth="476.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.UserFormOneController">
+<AnchorPane prefHeight="748.0" prefWidth="476.0" style="-fx-background-color: #fff;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.UserMassageFormController">
    <children>
-      <Label layoutX="55.0" layoutY="13.0" text="CHAT APP - User One">
-         <font>
-            <Font name="Arial Bold" size="35.0" />
-         </font>
-      </Label>
-      <Separator layoutX="18.0" layoutY="63.0" prefHeight="0.0" prefWidth="440.0" />
-      <JFXTextArea fx:id="txtUserOneChatView" focusColor="BLACK" focusTraversable="false" layoutX="18.0" layoutY="77.0" prefHeight="488.0" prefWidth="440.0" />
-      <TextField fx:id="txtUserOneText" layoutX="18.0" layoutY="581.0" prefHeight="35.0" prefWidth="338.0" promptText="Text Message" style="-fx-background-radius: 15px; -fx-border-color: #2c3e50; -fx-border-radius: 15px;">
+      <JFXTextArea fx:id="txtUserOneChatView" focusColor="BLACK" focusTraversable="false" layoutX="18.0" layoutY="77.0" prefHeight="599.0" prefWidth="443.0" />
+      <TextField fx:id="txtUserOneText" layoutX="18.0" layoutY="689.0" prefHeight="35.0" prefWidth="254.0" promptText="Text Message" style="-fx-background-radius: 15px; -fx-border-color: #2c3e50; -fx-border-radius: 15px;">
          <font>
             <Font size="15.0" />
          </font>
+         <effect>
+            <DropShadow color="#00000070" height="18.03" offsetX="1.0" offsetY="4.0" radius="7.775" spread="0.02" width="15.07" />
+         </effect>
       </TextField>
-      <JFXButton buttonType="RAISED" layoutX="368.0" layoutY="581.0" onAction="#btnUserOneSend" prefHeight="35.0" prefWidth="90.0" style="-fx-background-color: #2980b9;" text="Send" textFill="WHITE">
+      <JFXButton buttonType="RAISED" layoutX="378.0" layoutY="689.0" onAction="#btnUserOneSend" prefHeight="35.0" prefWidth="80.0" style="-fx-background-color: #2980b9;" text="Sent" textFill="WHITE">
          <font>
             <Font name="System Bold" size="15.0" />
          </font>
       </JFXButton>
+      <Pane layoutX="-4.0" layoutY="-6.0" prefHeight="79.0" prefWidth="487.0" style="-fx-background-color: #025464;">
+         <children>
+            <ImageView fitHeight="52.0" fitWidth="52.0" layoutX="35.0" layoutY="17.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../assets/user.png" />
+               </image>
+            </ImageView>
+            <Label fx:id="txtUserName" layoutX="108.0" layoutY="25.0" prefHeight="17.0" prefWidth="330.0" text="Kasun" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="25.0" />
+               </font>
+            </Label>
+         </children>
+      </Pane>
+      <ImageView fitHeight="36.0" fitWidth="38.0" layoutX="284.0" layoutY="689.0" onMouseClicked="#imagesentOnMouseClick" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../assets/icons8-camera-100.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="35.0" fitWidth="36.0" layoutX="330.0" layoutY="689.0" onMouseClicked="#imojisentOnMouseClick" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../assets/laugh.png" />
+         </image>
+      </ImageView>
    </children>
 </AnchorPane>
