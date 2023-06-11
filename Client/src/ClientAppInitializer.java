@@ -17,6 +17,5 @@ public class ClientAppInitializer extends Application {
         primaryStage.setTitle("Group Chat App");
         primaryStage.setResizable(false);
         primaryStage.show();
-
     }
 }

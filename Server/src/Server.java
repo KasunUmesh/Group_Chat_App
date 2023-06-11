@@ -7,32 +7,22 @@ public class Server {
 
     private static Socket socket;
     private static ServerSocket serverSocket;
+    private static ArrayList<ServerThread> threadArrayList = new ArrayList<>();
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws IOException {
 
-        ArrayList<ServerThread> threadArrayList = new ArrayList<>();
+        ServerSocket serverSocket = new ServerSocket(4000);
 
-        try(ServerSocket serverSocket = new ServerSocket(4000)) {
+        while (true) {
             System.out.println("Server is waiting for the clients requests..!");
+            Socket socket = serverSocket.accept();
+            System.out.println("Client Connected");
 
-            while (true) {
-                Socket socket = serverSocket.accept();
-                ServerThread serverThread = new ServerThread(socket, threadArrayList);
-
-                threadArrayList.add(serverThread);
-                serverThread.start();
-
-            }
-        } catch (IOException e) {
-            System.out.println("Error Occurred in main: " + e.getStackTrace());
-        } finally {
-            try {
-                socket.close();
-                serverSocket.close();
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
+            ServerThread serverThread = new ServerThread(socket, threadArrayList);
+            threadArrayList.add(serverThread);
+            serverThread.start();
         }
+
 
     }
 

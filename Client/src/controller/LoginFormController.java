@@ -4,6 +4,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
@@ -20,25 +21,15 @@ public class LoginFormController {
 
     public static String userName;
 
-    public static ArrayList<String> users = new ArrayList<>();
+
 
     public void btnLoginOnAction(ActionEvent actionEvent) throws IOException {
-        userName = txtloginUserName.getText().trim();
-        boolean flag = false;
-        if (users.isEmpty()) {
-            users.add(userName);
-            flag = true;
-        }
+        userName = txtloginUserName.getText();
+        if (userName.equals("")) {
+            new Alert(Alert.AlertType.WARNING, "Please check your Username").showAndWait();
+            clearloginOnAction();
 
-        for (String s : users) {
-            if (!s.equalsIgnoreCase(userName)) {
-               flag = true;
-                System.out.println(userName);
-                break;
-            }
-        }
-
-        if (flag) {
+        } else {
 
             Parent parent = FXMLLoader.load(this.getClass().getResource("../view/UserFormOne.fxml"));
             Scene scene = new Scene(parent);
@@ -46,8 +37,13 @@ public class LoginFormController {
             Stage primaryStage = (Stage) this.mainroot.getScene().getWindow();
             primaryStage.setScene(scene);
             primaryStage.centerOnScreen();
-            primaryStage.setResizable(false);
+//            primaryStage.setResizable(false);
+
         }
+
+    }
+    public void clearloginOnAction() {
+        txtloginUserName.clear();
 
     }
 }
